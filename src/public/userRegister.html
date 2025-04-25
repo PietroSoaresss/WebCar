@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 32px 24px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .redirect-link {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .redirect-link a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .redirect-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .form-container {
+                padding: 18px 8px;
+                max-width: 98vw;
+            }
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Account</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="regUsername">Nome</label>
+                <input type="text" id="regUsername" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Senha</label>
+                <input type="password" id="regPassword" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="regPasswordC">Confirmar Senha</label>
+                <input type="password" id="regPasswordC" name="passwordC" required>
+            </div>
+            <div class="form-group">
+                <label for="EndVend">Endereço</label>
+                <input type="text" id="EndVend" name="endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="foneVend">Telefone</label>
+                <input type="text" id="foneVend" name="telefone" required>
+            </div>
+            <button type="submit" id="enviar" class="btn">Register</button>
+        </form>
+        <div class="redirect-link">
+            Already have an account? <a href="login.html">Login here</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
