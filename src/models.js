@@ -1,33 +1,30 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
+// User schema
+const userSchema = new mongoose.Schema({
+  nome: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  senha: { type: String, required: true },
+  telefone: { type: String },
+  endereco: { type: String }
+});
+
+// Car schema
 const carSchema = new mongoose.Schema({
-    nome: String,
-    marca: String,
-    ano: Number,
-    modelo: String,
-    combustivel: String,
-    cor: String,
-    km: Number,
-    preco: String,
-    descricao: String,
-    imagem: String,
-       
-})
+  marca: { type: String, required: true },
+  modelo: { type: String, required: true },
+  ano: { type: Number, required: true },
+  preco: { type: Number, required: true },
+  cor: { type: String },
+  km: { type: Number },
+  combustivel: { type: String },
+  imagem: { type: String },
+  descricao: { type: String },
+  categoria: { type: String, required: true },
+});
 
-const Carro = mongoose.model('Carro', carSchema);
+// Export models
+const Users = mongoose.model('Users', userSchema);
+const Carros = mongoose.model('Carros', carSchema);
 
-const UsersSchema = new mongoose.Schema({
-
-    nome: String,
-    email: String,
-    telefone: String,
-    senha: String,
-    endereco: String,
-
-})
-
-const Users = mongoose.model('Users', UsersSchema);  
-
-module.exports = Carro;
-module.exports = Users;
+module.exports = { Users, Carros };

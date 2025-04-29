@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro de Venda de Carro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <style>
+    .form-container {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .form-label i {
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">CarCatalog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <span id="userEmail" class="d-none text-white me-2"></span>
+          <a href="/login" class="btn btn-outline-light login-btn">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+          <button class="btn btn-danger logout-btn d-none">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Form Section -->
+  <div class="form-container bg-white">
+    <h2 class="text-center mb-4">Cadastro de Venda de Carro</h2>
+    <form id="carForm" class="row g-3" enctype="multipart/form-data">
+      <div class="col-md-6">
+        <label for="marca" class="form-label"><i class="bi bi-truck-front"></i> Marca</label>
+        <input type="text" class="form-control" id="marca" name="marca" placeholder="Ex: Toyota" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="modelo" class="form-label"><i class="bi bi-car-front"></i> Modelo</label>
+        <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ex: Corolla" required />
+      </div>
+
+      <div class="col-md-4">
+        <label for="ano" class="form-label"><i class="bi bi-calendar3"></i> Ano</label>
+        <input type="number" class="form-control" id="ano" name="ano" min="1900" max="2025" placeholder="Ex: 2020" required />
+      </div>
+
+      <div class="col-md-4">
+        <label for="preco" class="form-label"><i class="bi bi-currency-dollar"></i> Preço</label>
+        <input type="number" class="form-control" id="preco" name="preco" placeholder="Ex: 50000.00" required />
+      </div>
+
+      <div class="col-md-4">
+        <label for="cor" class="form-label"><i class="bi bi-palette"></i> Cor</label>
+        <input type="text" class="form-control" id="cor" name="cor" placeholder="Ex: Preto" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="km" class="form-label"><i class="bi bi-speedometer2"></i> Quilometragem</label>
+        <input type="number" class="form-control" id="km" name="km" placeholder="Ex: 50000" required />
+      </div>
+
+      <div class="col-md-6">
+        <label for="combustivel" class="form-label"><i class="bi bi-fuel-pump"></i> Combustível</label>
+        <select class="form-control" id="combustivel" name="combustivel" required>
+          <option value="">Selecione o tipo de combustível</option>
+          <option value="Gasolina">Gasolina</option>
+          <option value="Álcool">Álcool</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Elétrico">Elétrico</option>
+          <option value="Híbrido">Híbrido</option>
+        </select>
+      </div>
+
+      <div class="col-md-12">
+        <label for="imagem" class="form-label"><i class="bi bi-image"></i> Imagem</label>
+        <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" required />
+      </div>
+
+      <div class="col-md-12">
+        <label for="descricao" class="form-label"><i class="bi bi-card-text"></i> Descrição</label>
+        <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descrição do veículo" required></textarea>
+      </div>
+
+      <div class="col-md-12">
+        <label for="categoria" class="form-label"><i class="bi bi-tag"></i> Categoria</label>
+        <select class="form-control" id="categoria" name="categoria" required>
+          <option value="">Selecione uma categoria</option>
+          <option value="SUV">SUV</option>
+          <option value="Sedan">Sedan</option>
+          <option value="Hatch">Hatch</option>
+          <option value="Pickup">Pickup</option>
+          <option value="Esportivo">Esportivo</option>
+          <option value="Van">Van</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="bi bi-check-circle"></i> Cadastrar Veículo
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

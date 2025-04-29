@@ -1,169 +1,210 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Carros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-        .card-category {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .card-category:hover {
-            transform: scale(1.05);
-        }
-        .search-container {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-        #userEmail {
-            margin-right: 10px;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Carros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    .banner {
+      background: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+      position: relative;
+      color: white;
+    }
+
+    .search-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1100px;
+    }
+
+    .card-category {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .card-category:hover {
+      transform: scale(1.05);
+    }
+
+    #userEmail {
+      margin-right: 10px;
+      color: white;
+    }
+
+    .btn-filter {
+      border-radius: 50px;
+      padding: 8px 20px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">CarCatalog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Categorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>
-                </ul>
-                <!-- Login/Logout buttons and user info -->
-                <div class="d-flex align-items-center">
-                    <!-- User email display (visible when logged in) -->
-                    <span id="userEmail" class="d-none"></span>
-                    
-                    <!-- Login button (shows when user is not logged in) -->
-                    <a href="/login" class="btn btn-outline-light login-btn">
-                        <i class="bi bi-box-arrow-in-right"></i> Login
-                    </a>
-                    
-                    <!-- Logout button (hidden by default, shows when user is logged in) -->
-                    <button class="btn btn-danger logout-btn d-none">
-                        <i class="bi bi-box-arrow-right"></i> Logout
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Rest of your HTML content -->
-    <!-- Search Container -->
-    <div class="container">
-        <div class="search-container">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Buscar carros...">
-                <button class="btn btn-primary" type="button">
-                    <i class="bi bi-search"></i> Buscar
-                </button>
-            </div>
-        </div>
-
-        <!-- Categories Carousel -->
-        <div class="row g-4">
-            <div class="col-md-3">
-                <div class="card card-category">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7wH2-yydGYvMyopxmVjn7EgY_eOsumAxEhQ&s" class="card-img-top" alt="SUV">
-                    <div class="card-body">
-                        <h5 class="card-title">SUVs</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-category">
-                    <img src="https://media.audi.com/is/image/audi/nemo/br/models/A4/A4Sedan/2024/A4_Sedan_Quattro_2-crop8.jpeg" class="card-img-top" alt="Sedans">
-                    <div class="card-body">
-                        <h5 class="card-title">Sedans</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-category">
-                    <img src="https://quatrorodas.abril.com.br/wp-content/uploads/2020/09/2021-Ferrari-Portofino-M-1.jpg?quality=70&strip=info&w=720&crop=1" class="card-img-top" alt="Esportivos">
-                    <div class="card-body">
-                        <h5 class="card-title">Esportivos</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-category">
-                    <img src="https://midias.vrum.com.br/_midias/jpg/2024/07/19/1200x675/1_toyota_hilux_gr_s_de_frente_em_movimento-39009724.jpg" class="card-img-top" alt="Elétricos">
-                    <div class="card-body">
-                        <h5 class="card-title">Camionetas</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">CarCatalog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Categorias</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <span id="userEmail" class="d-none"></span>
+        <a href="/login" class="btn btn-outline-light login-btn">
+          <i class="bi bi-box-arrow-in-right"></i> Login
+        </a>
+        <button class="btn btn-danger logout-btn d-none">
+          <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Banner -->
+<div class="banner">
+  <div class="search-box">
+    <div class="d-flex justify-content-center mb-3 flex-wrap gap-2">
+      <button class="btn btn-filter btn-outline-danger active">Todos</button>
+      <button class="btn btn-filter btn-outline-secondary">Novos</button>
+      <button class="btn btn-filter btn-outline-secondary">Usados</button>
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Digite marca ou modelo do carro">
+      <button class="btn btn-danger" type="button">
+        <i class="bi bi-search"></i> Buscar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Cards de categorias -->
+<div class="container mt-5 pt-5">
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="card card-category">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7wH2-yydGYvMyopxmVjn7EgY_eOsumAxEhQ&s" class="card-img-top" alt="SUV">
+        <div class="card-body">
+          <h5 class="card-title">SUVs</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-category">
+        <img src="https://media.audi.com/is/image/audi/nemo/br/models/A4/A4Sedan/2024/A4_Sedan_Quattro_2-crop8.jpeg" class="card-img-top" alt="Sedans">
+        <div class="card-body">
+          <h5 class="card-title">Sedans</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-category">
+        <img src="https://quatrorodas.abril.com.br/wp-content/uploads/2020/09/2021-Ferrari-Portofino-M-1.jpg?quality=70&strip=info&w=720&crop=1" class="card-img-top" alt="Esportivos">
+        <div class="card-body">
+          <h5 class="card-title">Esportivos</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-category">
+        <img src="https://midias.vrum.com.br/_midias/jpg/2024/07/19/1200x675/1_toyota_hilux_gr_s_de_frente_em_movimento-39009724.jpg" class="card-img-top" alt="Camionetas">
+        <div class="card-body">
+          <h5 class="card-title">Camionetas</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script de autenticação -->
+<script>
+  function getToken() {
+    return localStorage.getItem('jwtToken');
+  }
+
+  function saveToken(token) {
+    localStorage.setItem('jwtToken', token);
+  }
+
+  function removeToken() {
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userEmail');
+  }
+
+  function saveUserEmail(email) {
+    localStorage.setItem('userEmail', email);
+  }
+
+  function getUserEmail() {
+    return localStorage.getItem('userEmail');
+  }
+
+  async function checkLoginStatus() {
+    const token = getToken();
+    const userEmail = getUserEmail();
     
-    <!-- Script to handle login/logout button visibility with MongoDB -->
-    <script>
-        // Check login status from server
-        async function checkLoginStatus() {
-            try {
-                const response = await fetch('/api/check-login');
-                const data = await response.json();
-                
-                const loginBtn = document.querySelector('.login-btn');
-                const logoutBtn = document.querySelector('.logout-btn');
-                const userEmail = document.getElementById('userEmail');
-                
-                if (data.isLoggedIn) {
-                    // User is logged in
-                    loginBtn.classList.add('d-none');
-                    logoutBtn.classList.remove('d-none');
-                    
-                    // Display user email
-                    userEmail.textContent = data.user.email;
-                    userEmail.classList.remove('d-none');
-                } else {
-                    // User is not logged in
-                    loginBtn.classList.remove('d-none');
-                    logoutBtn.classList.add('d-none');
-                    userEmail.classList.add('d-none');
-                }
-            } catch (error) {
-                console.error('Erro ao verificar status de login:', error);
-            }
+    const loginBtn = document.querySelector('.login-btn');
+    const logoutBtn = document.querySelector('.logout-btn');
+    const userEmailElement = document.getElementById('userEmail');
+    
+    if (!token) {
+      loginBtn.classList.remove('d-none');
+      logoutBtn.classList.add('d-none');
+      userEmailElement.classList.add('d-none');
+      return;
+    }
+    
+    try {
+      const response = await fetch('/api/check-login', {
+        headers: {
+          'Authorization': `Bearer ${token}`
         }
-        
-        // Handle logout
-        document.querySelector('.logout-btn').addEventListener('click', async function() {
-            try {
-                const response = await fetch('/api/logout');
-                const data = await response.json();
-                
-                if (response.ok) {
-                    // Reload page after successful logout
-                    window.location.reload();
-                } else {
-                    console.error('Erro ao fazer logout:', data.message);
-                }
-            } catch (error) {
-                console.error('Erro ao fazer logout:', error);
-            }
-        });
-        
-        // Run on page load
-        document.addEventListener('DOMContentLoaded', checkLoginStatus);
-    </script>
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        loginBtn.classList.add('d-none');
+        logoutBtn.classList.remove('d-none');
+        userEmailElement.textContent = data.user.email || userEmail;
+        userEmailElement.classList.remove('d-none');
+      } else {
+        removeToken();
+        loginBtn.classList.remove('d-none');
+        logoutBtn.classList.add('d-none');
+        userEmailElement.classList.add('d-none');
+      }
+    } catch (error) {
+      console.error('Erro ao verificar status de login:', error);
+      removeToken();
+      loginBtn.classList.remove('d-none');
+      logoutBtn.classList.add('d-none');
+      userEmailElement.classList.add('d-none');
+    }
+  }
+
+  document.querySelector('.logout-btn').addEventListener('click', function() {
+    removeToken();
+    window.location.reload();
+  });
+
+  document.addEventListener('DOMContentLoaded', checkLoginStatus);
+</script>
+
 </body>
 </html>

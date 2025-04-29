@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       delete data.confirmarSenha;
+      
 
       try {
         const res = await fetch("/registrousuario", {
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (res.ok) {
           alert(result.message);
+          window.location.href = "/login";
           event.target.reset();
         } else {
           alert("Erro: " + result.message);
