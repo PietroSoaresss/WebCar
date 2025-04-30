@@ -41,23 +41,22 @@ mongoose.connect('mongodb+srv://pietro:91672133@webcars.6la2sna.mongodb.net/?ret
 
 // Middleware to verify JWT token
 function verifyToken(req, res, next) {
-  // Get token from Authorization header or from cookies
   const token = req.headers.authorization?.split(' ')[1] || req.cookies?.token;
 
   if (!token) {
-    return res.status(403).json({ message: "Token não fornecido" });
+    return res.redirect('/login');
   }
 
   try {
-    // Verify the token
     const decoded = jwt.verify(token, JWT_SECRET);
     req.userId = decoded.userId;
     req.email = decoded.email;
     next();
   } catch (error) {
-    return res.status(401).json({ message: "Token inválido" });
+    return res.redirect('/login');
   }
 }
+
 
 // Route to serve the index page
 app.get('/', (req, res) => {
@@ -171,6 +170,11 @@ app.post('/registrousuario', async (req, res) => {
 });
 
 //registro de carros 
+app.get('/registrocarros',verifyToken, (req, res)=> {
+    
+      res.sendFile(path.join(__dirname, 'public/carSell.html'));
+    
+});
 
 app.post('/registrocarros', upload.single('imagem'), async (req, res) => {
     try {
