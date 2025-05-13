@@ -1,54 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
-
-  // ----- Login -----
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = loginForm.email.value;
-      const senha = loginForm.senha.value;
-
-      try {
-        const res = await fetch("http://localhost:3000/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, senha }),
-        });
-
-        const data = await res.json();
-
-        if (res.ok) {
-          alert(data.message);
-          window.location.href = "/";
-        } else {
-          alert(data.message);
-        }
-      } catch (err) {
-        alert("Erro ao fazer login. Tente novamente.");
-      }
-    });
-  } else {
-    console.warn("Login form não encontrado.");
-  }
-
-  // ----- Cadastro -----
+  // Register form handler
   const registerForm = document.getElementById("registerForm");
   if (registerForm) {
-    registerForm.addEventListener("submit", async function register(event) {
+    registerForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-
 
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData.entries());
-
-      if (data.senha !== data.confirmarSenha) {
-        alert("As senhas não coincidem.");
-        return;
-      }
-
-      delete data.confirmarSenha;
-      
 
       try {
         const res = await fetch("/registrousuario", {
@@ -62,18 +20,58 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await res.json();
 
         if (res.ok) {
+          // Store the token and user info
+          localStorage.setItem('jwtToken', result.token);
+          localStorage.setItem('userEmail', result.user.email);
+          
           alert(result.message);
-          window.location.href = "/login";
-          event.target.reset();
+          window.location.href = "/";
         } else {
           alert("Erro: " + result.message);
         }
       } catch (error) {
-       
+        console.error('Erro ao cadastrar usuário:', error);
         alert('Erro ao cadastrar usuário.');
       }
     });
-  } else {
-    console.warn("Formulário de cadastro não encontrado.");
+  }
+
+  // Car registration form handler
+  const carForm = document.getElementById("carForm");
+  if (carForm) {
+    carForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      
+      try {
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+          alert('Você precisa estar logado para anunciar um carro.');
+          window.location.href = '/login';
+          return;
+        }
+
+        const res = await fetch("/registrocarros", {
+          method: "POST",
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          alert(result.message);
+          window.location.href = "/";
+        } else {
+          alert("Erro: " + result.message);
+        }
+      } catch (error) {
+        console.error('Erro ao cadastrar carro:', error);
+        alert('Erro ao cadastrar carro.');
+      }
+    });
   }
 });
